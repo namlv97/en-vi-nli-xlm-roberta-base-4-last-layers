@@ -195,9 +195,9 @@ def create_enssemble_dataloader(list_tokenizers,list_sentences_0,list_sentences_
   
   dataloader={}
   for idx,d in enumerate(dataloaders):
-    for k,v in d:
+    for k in d:
       if k!='labels':
-        dataloader[f'{k}_{idx+1}']=v
+        dataloader[f'{k}_{idx+1}']=d[k]
 
   dataloader['labels']=torch.Tensor(list_labels).to(torch.long)
       
