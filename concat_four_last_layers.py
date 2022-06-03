@@ -46,9 +46,9 @@ class XLMRoBERTa4LastLayersForClassification(RobertaPreTrainedModel):
         self.init_weights()
 
     
-    def forward(self,input_ids,attention_mask,labels=None):
+    def forward(self,input_ids,attention_mask,token_type_ids,labels=None):
 
-        outputs = self.roberta(input_ids=input_ids,attention_mask=attention_mask,output_hidden_states=True)
+        outputs = self.roberta(input_ids=input_ids,attention_mask=attention_mask,token_type_ids=token_type_ids,output_hidden_states=True)
         last_layers=torch.stack(outputs.hidden_states[-4:])
         last_layers=last_layers.permute(1,2,0,3)
         features=torch.flatten(last_layers,start_dim=2)
