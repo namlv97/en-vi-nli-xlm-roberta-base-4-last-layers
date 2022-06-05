@@ -1,5 +1,13 @@
 import string
 import re
+import nltk
+from nltk.tokenize import word_tokenize as en_word_tokenize, sent_tokenize as en_sent_tokenize
+from nltk import pos_tag as en_pos_tag
+from underthesea import sent_tokenize as vi_sent_tokenize,word_tokenize as vi_word_tokenize, pos_tag as vi_pos_tag
+
+nltk.download('averaged_perceptron_tagger')
+nltk.download('punkt')
+nltk.download('words')
 
 punctuations=list(string.punctuation)
 
@@ -53,7 +61,9 @@ contraction_mapping = {"ain't": "is not", "aren't": "are not","can't": "cannot",
 def normalizer(s,lang='en'):
 
   def remove_meaningless_token(s):
-    return re.sub(r'\b(jeez|yeah|hum|huh|oh)\b',' ',s)
+    _s=re.sub(r'\b(um-hum)\b','um hum',s)
+    _s=re.sub(r'\b(um)\b','uh',_s)
+    return re.sub(r'\b(jeez|yeah|hum|huh|oh|N / a|NAME)\b',' ',_s)
 
   def remove_articles(text,language):
     if language=='en':
@@ -65,8 +75,7 @@ def normalizer(s,lang='en'):
     return ' '.join(text.split())
 
   def remove_punc(text):
-    # exclude = set(string.punctuation)
-    # return ''.join(ch for ch in text if ch not in exclude)
+
     chs=[]
     for ch in text:
       if ch not in punctuations:
@@ -75,12 +84,10 @@ def normalizer(s,lang='en'):
         chs.append(" ")
     return "".join(chs)
 
-  def lower(text):
-    return text.lower()
+  # def lower(text):
+  #   return text.lower()
 
   def remove_continuous_duplications(text):
-    # if language !='en':
-    #   return text
 
     if text.strip()=="":
       return text
@@ -90,15 +97,80 @@ def normalizer(s,lang='en'):
   def replace_contractions(text,language='en'):
     if language=='en':
       for k,v in contraction_mapping.items():
+        text=text.replace(k,v)
         k=re.sub(r'\''," '",k)
         text=text.replace(k,v)
       return text
     return text
-  
-  _s=lower(s)
-  _s=replace_contractions(_s,lang)
-  _s=remove_continuous_duplications(_s)
-  _s=remove_punc(_s)
-  _s=remove_articles(_s,lang)
+  def vi_tokenize(text):
+    sents=vi_sent_tokenize(text)
+    words=[]
+    pos_tags=[]
+    #ners=[]
+    for sent in sents:
+      _words=vi_word_tokenize(sent)
+      _pos_tags=vi_pos_tag(sent)
+      #_ners=vi_ner(sent)
+      for token in zip(_words,_pos_tags):
+        if (len(words)!=0 and token[0] not in punctuations and token[0]!=words[-1]) or (len(words)==0):
+          sub_tokens=remove_punc(token[0]).lower().split()
+          words+=sub_tokens
+          pos_tags+=[token[1][1]]*len(sub_tokens)
+        #ners.append(token[2][-1])
+    
+    return " ".join(words), " ".join(pos_tags)#," ".join(ners)
+
+  def en_tokenize(text):
+    sents=en_sent_tokenize(text)
+    words=[]
+    pos_tags=[]
+    #ners=[]
+    for sent in sents:
+      _words=en_word_tokenize(sent)
+      _pos_tags=en_pos_tag(_words)
+      # _ners=en_ne_chunk(_pos_tags,binary=False)
+      for token in zip(_words,_pos_tags):
+        if (len(words)!=0 and token[0] not in punctuations + ['a','an','the','A','An','The'] and token[0]!=words[-1]) or (len(words)==0):
+          sub_tokens=remove_punc(token[0]).lower().split()
+          words+=sub_tokens
+          pos_tags+=[token[1][1]]*len(sub_tokens)
+
+        ## currently not use NER
+        # if hasattr(token[2], 'label'):
+        #   for idx,leaf in enumerate(token[2].leaves()):
+        #     if idx==0:
+        #       ners.append(f'B-{token[2].label()}')
+        #     else:
+        #       ners.append(f'I-{token[2].label()}')
+        #     words.append(leaf[0])
+        #     pos_tags.append(leaf[1])
+              
+        # else:
+        #   words.append(token[0])
+        #   pos_tags.append(token[1][1])
+        #   ners.append('O')
+    
+    return " ".join(words), " ".join(pos_tags)#," ".join(ners)
+
+
+  def tokenize(text,language='en'):
+    
+    if language=='en':
+      words,pos_tags=en_tokenize(text)
+      return words,pos_tags
+
+    if language=='vi':
+      words,pos_tags=vi_tokenize(text)
+      return words,pos_tags
+    return text,""
+
+    
+
+  # _s=lower(s)
+  _s=replace_contractions(s,lang)
   _s=remove_meaningless_token(_s)
-  return white_space_fix(_s).strip()                           
+  words,pos_tags=tokenize(_s,lang)
+  # _s=remove_continuous_duplications(_s)
+  # _s=remove_articles(_s,lang)
+  
+  return white_space_fix(words).strip(),pos_tags  
