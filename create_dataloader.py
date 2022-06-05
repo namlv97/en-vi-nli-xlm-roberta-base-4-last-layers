@@ -24,14 +24,17 @@ class ClassificationDataset(Dataset):
           "inputs":{
             "input_ids": input_ids.to(self.device),
             'attention_mask':attention_mask.to(self.device),
-            'token_type_ids':self.token_type_ids[idx].to(self.device)
+            'token_type_ids':token_type_ids.to(self.device),
         }, "labels": label.to(self.device)}
         
         return sample
 
 def create_input(tokenizer,token_ids_0,token_ids_1=None,model_type='bert',max_length=512,padding=True):
   num_tokens_0=len(token_ids_0)
-  num_tokens_1=len(token_ids_1)
+  if token_ids_1==None:
+    num_tokens_1=0
+  else:
+    num_tokens_1=len(token_ids_1)
 
   if model_type=='bert':
     threshold_num_tokens_0=max_length-3-num_tokens_1
@@ -64,7 +67,7 @@ def create_input(tokenizer,token_ids_0,token_ids_1=None,model_type='bert',max_le
     attention_mask=[1]*len(input_ids)
 
     if padding==True:
-      input_ids=input_ids+[1]*trade_off
+      input_ids=input_ids+[tokenizer.pad_token_id]*trade_off
       attention_mask=attention_mask+[0]*trade_off
       token_type_ids=token_type_ids+[0]*trade_off
 
@@ -85,7 +88,10 @@ def create_inputs(tokenizer,list_sentences_0,list_sentences_1,list_labels,model_
   num_training_samples=len(list_sentences_0)
   for i in range(num_training_samples):
     token_ids_0=tokenizer.encode(list_sentences_0[i],add_special_tokens=False)
-    token_ids_1=tokenizer.encode(list_sentences_1[i],add_special_tokens=False)
+    if list_sentences_1==None:
+      token_ids_1=None
+    else:
+      token_ids_1=tokenizer.encode(list_sentences_1[i],add_special_tokens=False)
     _input_ids,_attention_mask,_token_type_ids=create_input(tokenizer,token_ids_0,token_ids_1,model_type,max_length)
     
     _labels=[list_labels[i]]*len(_input_ids)
@@ -102,7 +108,7 @@ def create_inputs(tokenizer,list_sentences_0,list_sentences_1,list_labels,model_
 
 def create_dataloader(tokenizer,list_sentences_0,list_sentences_1,list_labels,model_type='bert',max_length=512,batch_size=32,drop_last=False,shuffle=True,device='cpu'):
   dataloader=create_inputs(tokenizer,list_sentences_0,list_sentences_1,list_labels,model_type,max_length)
-
+  
   dataloader=ClassificationDataset(**dataloader,device=device)
   dataloader=DataLoader(dataloader,batch_size=batch_size,drop_last=drop_last,shuffle=shuffle)
   return dataloader
