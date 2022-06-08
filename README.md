@@ -1,7 +1,10 @@
 # en-vi-nli-xlm-roberta-base-4-last-layers
 
 # Parameters
+
+
 | num samples  | 60K   |
+|--------------|-------|
 | Max length   | 100   |
 | epochs       | 4     |
 | warmup steps | 200   |
