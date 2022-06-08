@@ -1,4 +1,4 @@
-# en-vi-nli-xlm-roberta-base-4-last-layers
+# en-vi-nli-xlm-roberta-large-4-last-layers
 
 # Dataset:
 With English: I used NLTK to preprocess
