@@ -44,7 +44,7 @@ Because of the limitation of GPU Tesla T4, I only trained random 60k samples dur
 | concat 4 last layers                             |
 
 # Performance
-With 
+## With en-vi pairs
 |              | precision | recall   | f1-score | support |
 |--------------|-----------|----------|----------|---------|
 | entailment   | 0.88302   | 0.84072  | 0.86135  | 1670    |
