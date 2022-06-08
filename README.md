@@ -16,7 +16,7 @@
 ### Vietnamese premise length + Vietnamese hypothesis length distribution
 ![vi-total](https://user-images.githubusercontent.com/101851984/172544045-88e7a7ce-ab21-4225-88a5-21b9ac4ef8c4.png)
 
-However, I did not take all samples. I only took which sample length is smaller than or equal 100 tokens and greater than 0
+However, I did not take all samples. I only took which sample total length is smaller than or equal 100 tokens and greater than 0
 
 The training dataset:
 | Num samples | premise language | hypothesis language |
