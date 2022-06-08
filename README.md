@@ -1,9 +1,12 @@
 # en-vi-nli-xlm-roberta-large-4-last-layers
 
 # Dataset:
-With English: I used NLTK to preprocess
+## With English: I used NLTK to preprocess
 
-With Vietnamese: I used Underthesea to preprocess
+### English premise length distribution
+![en_premise_length_distribution](https://user-images.githubusercontent.com/101851984/172543158-8978be27-86ad-4990-9e09-fd21371d8cda.png)
+
+## With Vietnamese: I used Underthesea to preprocess
 
 However, I did not take all samples. I only took which sample length is smaller than or equal 100 tokens and greater than 0
 
