@@ -82,3 +82,4 @@ Because of the limitation of GPU Tesla T4, I only trained random 60k samples dur
 - Train with the entire dataset
 - Set max length as 128/256
 - Apply RXF at https://arxiv.org/pdf/2008.03156v1.pdf
+-  Apply other multilingual models such as RemBert, T5-multilingua, InfoXLM,... or combine them into the ensemble model
