@@ -2,7 +2,7 @@
 
 # Parameters
 
-
+| Parameter    |       |
 |--------------|-------|
 | num samples  | 60K   |
 | Max length   | 100   |
