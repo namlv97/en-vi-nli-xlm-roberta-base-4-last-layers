@@ -52,6 +52,7 @@ Because of the limitation of GPU Tesla T4, I only trained random 60k samples dur
 | optimizer               | AdamW                  |
 | lr                      | 1e-5                   |
 | eps                     | 1e-8                   |
+| lr_scheduler            | linear                 |
 | concat 4 last layers                             |
 
 # Performance
