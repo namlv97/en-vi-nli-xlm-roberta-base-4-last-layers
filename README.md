@@ -25,6 +25,8 @@ The testing dataset:
 | 5010        | English          | Vietnamese          |
 | 5010        | Vietnamese       | Vietnamese          |
 
+Because of the limitation of GPU Tesla T4, I only trained random 60k samples
+
 # Parameters
 
 | Parameter               |                        |
