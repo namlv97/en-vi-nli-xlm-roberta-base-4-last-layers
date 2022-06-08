@@ -53,3 +53,13 @@ Because of the limitation of GPU Tesla T4, I only trained random 60k samples dur
 | accuracy     |           |          | 0.85090  | 5010    |
 | macro avg    | 0.85135   | 0.85090  | 0.85079  | 5010    |
 | weighted avg | 0.85135   | 0.85090  | 0.85079  | 5010    |
+
+## With vi-vi pairs
+|              | precision | recall   | f1-score | support |
+|--------------|-----------|----------|----------|---------|
+| entailment   | 0.85434   | 0.75509  | 0.80165  | 1670    |
+| neutral      | 0.73233   | 0.81916  | 0.77332  | 1670    |
+| contradiction| 0.84334   | 0.84132  | 0.84233  | 1670    |
+| accuracy     |           |          | 0.80519  | 5010    |
+| macro avg    | 0.81000   | 0.80519  | 0.80577  | 5010    |
+| weighted avg | 0.81000   | 0.80519  | 0.80577  | 5010    |
