@@ -3,6 +3,9 @@
 # Dataset:
 With English: I used NLTK to preprocess
 
+![download](https://user-images.githubusercontent.com/101851984/172542478-3f033c91-71f1-4cfa-b036-8c4533acb408.png)
+
+
 With Vietnamese: I used Underthesea to preprocess
 
 However, I did not take all samples. I only took which sample length is smaller than or equal 100 tokens and greater than 0
