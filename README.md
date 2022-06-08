@@ -74,3 +74,8 @@ Because of the limitation of GPU Tesla T4, I only trained random 60k samples dur
 | accuracy     |           |          | 0.80519  | 5010    |
 | macro avg    | 0.81000   | 0.80519  | 0.80577  | 5010    |
 | weighted avg | 0.81000   | 0.80519  | 0.80577  | 5010    |
+
+# Future works
+- Train with the entire dataset
+- Set max length as 256
+- Apply RXF at https://arxiv.org/pdf/2008.03156v1.pdf
