@@ -1,7 +1,8 @@
 # en-vi-nli-xlm-roberta-large-4-last-layers
 
 # Dataset:
-## With English: I used NLTK to preprocess
+## With English: 
+I used NLTK to preprocess
 
 ### English premise length distribution
 ![en_premise_length_distribution](https://user-images.githubusercontent.com/101851984/172543158-8978be27-86ad-4990-9e09-fd21371d8cda.png)
@@ -10,7 +11,8 @@
 ### English premise length + Vietnamese hypothesis length distribution
 ![en-vi-length-distribution](https://user-images.githubusercontent.com/101851984/172543744-ff236083-4bca-46d0-895c-b4d9842226c9.png)
 
-## With Vietnamese: I used Underthesea to preprocess
+## With Vietnamese:
+I used Underthesea to preprocess
 ### Vietnamese premise length distribution
 ![vi_premise_length_distribution](https://user-images.githubusercontent.com/101851984/172543957-3ca3a7ee-92d8-4707-b12f-7a90374d8ea9.png)
 ### Vietnamese premise length + Vietnamese hypothesis length distribution
