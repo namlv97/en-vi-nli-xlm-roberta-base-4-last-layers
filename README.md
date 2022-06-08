@@ -2,7 +2,9 @@
 
 # Dataset:
 With English: I used NLTK to preprocess
+
 With Vietnamese: I used Underthesea to preprocess
+
 However, I will not take all samples. I only take which sample length is smaller than or equal 100 tokens and greater 0
 
 The training dataset:
