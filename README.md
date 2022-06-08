@@ -25,7 +25,11 @@ The testing dataset:
 | 5010        | English          | Vietnamese          |
 | 5010        | Vietnamese       | Vietnamese          |
 
-Because of the limitation of GPU Tesla T4, I only trained random 60k samples
+Because of the limitation of GPU Tesla T4, I only trained random 60k samples during training section.
+| Num samples | premise language | hypothesis language |
+|-------------|------------------|---------------------|
+| 30170       | English          | Vietnamese          |
+| 29830       | Vietnamese       | Vietnamese          |
 
 # Parameters
 
