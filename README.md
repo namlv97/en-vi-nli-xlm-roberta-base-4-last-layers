@@ -78,5 +78,5 @@ Because of the limitation of GPU Tesla T4, I only trained random 60k samples dur
 
 # Future works
 - Train with the entire dataset
-- Set max length as 256
+- Set max length as 128/256
 - Apply RXF at https://arxiv.org/pdf/2008.03156v1.pdf
