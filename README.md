@@ -5,8 +5,16 @@
 
 ### English premise length distribution
 ![en_premise_length_distribution](https://user-images.githubusercontent.com/101851984/172543158-8978be27-86ad-4990-9e09-fd21371d8cda.png)
+### Vietnamese hypothesis length distribution
+![hypothesis_length_distribution](https://user-images.githubusercontent.com/101851984/172543638-f1ccc80e-d908-428e-8c79-8256a86f07f0.png)
+### English premise length + Vietnamese hypothesis length distribution
+![en-vi-length-distribution](https://user-images.githubusercontent.com/101851984/172543744-ff236083-4bca-46d0-895c-b4d9842226c9.png)
 
 ## With Vietnamese: I used Underthesea to preprocess
+### Vietnamese premise length distribution
+![vi_premise_length_distribution](https://user-images.githubusercontent.com/101851984/172543957-3ca3a7ee-92d8-4707-b12f-7a90374d8ea9.png)
+### Vietnamese premise length + Vietnamese hypothesis length distribution
+![vi-total](https://user-images.githubusercontent.com/101851984/172544045-88e7a7ce-ab21-4225-88a5-21b9ac4ef8c4.png)
 
 However, I did not take all samples. I only took which sample length is smaller than or equal 100 tokens and greater than 0
 
