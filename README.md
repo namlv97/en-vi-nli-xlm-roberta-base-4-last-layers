@@ -58,7 +58,8 @@ Because of the limitation of GPU Tesla T4, I only trained random 60k samples dur
 | concat 4 last layers                             |
 
 # Performance
-## With en-vi pairs
+## No SMART
+### With en-vi pairs
 |              | precision | recall   | f1-score | support |
 |--------------|-----------|----------|----------|---------|
 | entailment   | 0.88302   | 0.84072  | 0.86135  | 1670    |
@@ -68,7 +69,7 @@ Because of the limitation of GPU Tesla T4, I only trained random 60k samples dur
 | macro avg    | 0.85135   | 0.85090  | 0.85079  | 5010    |
 | weighted avg | 0.85135   | 0.85090  | 0.85079  | 5010    |
 
-## With vi-vi pairs
+### With vi-vi pairs
 |              | precision | recall   | f1-score | support |
 |--------------|-----------|----------|----------|---------|
 | entailment   | 0.85434   | 0.75509  | 0.80165  | 1670    |
@@ -77,6 +78,27 @@ Because of the limitation of GPU Tesla T4, I only trained random 60k samples dur
 | accuracy     |           |          | 0.80519  | 5010    |
 | macro avg    | 0.81000   | 0.80519  | 0.80577  | 5010    |
 | weighted avg | 0.81000   | 0.80519  | 0.80577  | 5010    |
+
+## with SMART
+### With en-vi pairs
+|              | precision | recall   | f1-score | support |
+|--------------|-----------|----------|----------|---------|
+| entailment   | 0.89545   | 0.83593  | 0.86466  | 1670    |
+| neutral      | 0.80695   | 0.84850  | 0.82720  | 1670    |
+| contradiction| 0.88673   | 0.90000  | 0.89331  | 1670    |
+| accuracy     |           |          | 0.86148  | 5010    |
+| macro avg    | 0.86304   | 0.86148  | 0.86173  | 5010    |
+| weighted avg | 0.86304   | 0.86148  | 0.86173  | 5010    |
+
+### With vi-vi pairs
+|              | precision | recall   | f1-score | support |
+|--------------|-----------|----------|----------|---------|
+| entailment   | 0.85190   | 0.76467  | 0.80593  | 1670    |
+| neutral      | 0.73233   | 0.81916  | 0.77332  | 1670    |
+| contradiction| 0.86873   | 0.84012  | 0.85419  | 1670    |
+| accuracy     |           |          | 0.81158  | 5010    |
+| macro avg    | 0.81721   | 0.81158  | 0.81249  | 5010    |
+| weighted avg | 0.81721   | 0.81158  | 0.81249  | 5010    |
 
 # Future works
 - Train with the entire dataset
